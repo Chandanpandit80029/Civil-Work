@@ -3,7 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
-  Image, Upload, Download, Trash2, X, FileText, Maximize2,
+  Image, Upload, Download, Trash2, X, FileText,
   Search, Grid3X3, List, FolderOpen, Tag, Calendar, HardDrive,
   Eye, FileDown, Plus, TrendingUp
 } from 'lucide-react';

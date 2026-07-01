@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Search, BookOpen, Download, ExternalLink, Loader2 } from 'lucide-react';
+import { Search, BookOpen, ExternalLink, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useList } from '@/hooks/useApi';
 import type { ISCode } from '@/types';

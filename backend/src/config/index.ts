@@ -12,6 +12,7 @@ export const config = {
   },
   database: {
     url: process.env.DATABASE_URL || 'postgresql://localhost:5432/civil_engineer_db',
+    directUrl: process.env.DIRECT_URL || '',
   },
   cloudinary: {
     cloudName: process.env.CLOUDINARY_CLOUD_NAME || '',
@@ -36,6 +37,12 @@ export const config = {
   rateLimit: {
     windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '900000'),
     max: parseInt(process.env.RATE_LIMIT_MAX || '100'),
+  },
+  supabase: {
+    url: process.env.SUPABASE_URL || '',
+    publishableKey: process.env.SUPABASE_PUBLISHABLE_KEY || '',
+    secretKey: process.env.SUPABASE_SECRET_KEY || '',
+    jwksUrl: process.env.SUPABASE_JWKS_URL || '',
   },
   upload: {
     maxFileSize: parseInt(process.env.MAX_FILE_SIZE || '10485760'),

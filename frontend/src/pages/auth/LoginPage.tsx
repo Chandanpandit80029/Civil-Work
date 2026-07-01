@@ -10,7 +10,6 @@ import { Eye, EyeOff, Loader2 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { api } from '@/services/api';
 import { useAuthStore } from '@/store/authStore';
-import type { LoginInput } from '@/types';
 
 const loginSchema = z.object({
   email: z.string().email('Please enter a valid email'),

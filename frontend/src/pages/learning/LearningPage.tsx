@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { api } from '@/services/api';
-import { GraduationCap, BookOpen, Video, FileQuestion, ChevronRight, Loader2 } from 'lucide-react';
+import { BookOpen, Video, FileQuestion, ChevronRight, Loader2 } from 'lucide-react';
 
 const iconMap: Record<string, React.ReactNode> = {
   BookOpen: <BookOpen size={24} />,

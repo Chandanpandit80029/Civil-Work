@@ -20,7 +20,7 @@ export interface CalcResult {
 
 // Concrete Mix Design (IS 456:2000)
 export function calculateConcreteMix(input: CalcInput): CalcResult {
-  const { cementGrade = 53, waterCementRatio = 0.45, aggregateSize = 20, slump = 100, exposure = 3 } = input;
+  const { cementGrade = 53, waterCementRatio = 0.45, aggregateSize = 20, slump = 100 } = input;
   
   const steps: CalcStep[] = [];
   
@@ -94,7 +94,7 @@ export function calculateSteelWeight(input: CalcInput): CalcResult {
 
 // Slab Design (One-way slab - IS 456:2000)
 export function calculateSlab(input: CalcInput): CalcResult {
-  const { span, width, liveLoad = 3, floorFinish = 1.5, fck = 25, fy = 500 } = input;
+  const { span, liveLoad = 3, floorFinish = 1.5, fck = 25, fy = 500 } = input;
   
   const steps: CalcStep[] = [];
 
@@ -123,7 +123,6 @@ export function calculateSlab(input: CalcInput): CalcResult {
   const mu = moment * 1e6; // Convert to N-mm
   const b = 1000; // 1m width
   const d = effectiveDepth;
-  const xuMax = 0.48 * d;
   const ast = (0.5 * fck * b * d / fy) * (1 - Math.sqrt(1 - (4.6 * mu) / (fck * b * d * d)));
   const minimumAst = 0.0012 * b * d;
   const providedAst = Math.max(ast, minimumAst);
@@ -252,7 +251,7 @@ export function calculateColumn(input: CalcInput): CalcResult {
 
 // Foundation Design (IS 456:2000)
 export function calculateFoundation(input: CalcInput): CalcResult {
-  const { columnLoad, bearingCapacity = 200, columnWidth = 300, columnDepth = 300, fck = 25, fy = 500 } = input;
+  const { columnLoad, bearingCapacity = 200, columnWidth = 300, fck = 25 } = input;
   
   const steps: CalcStep[] = [];
   
@@ -426,7 +425,7 @@ export function calculatePipeFlow(input: CalcInput): CalcResult {
 
 // Load Calculation
 export function calculateLoad(input: CalcInput): CalcResult {
-  const { deadLoad, liveLoad, windLoad, seismicLoad } = input;
+  const { deadLoad, liveLoad, windLoad } = input;
   
   const steps: CalcStep[] = [];
   const totalServiceLoad = (deadLoad || 0) + (liveLoad || 0);

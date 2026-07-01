@@ -3,8 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useList, useCreate, useUpdate, useDelete } from '@/hooks/useApi';
-import { Receipt, Calculator, Plus, Trash2, Save, Download, TrendingUp, Search, Loader2 } from 'lucide-react';
-import toast from 'react-hot-toast';
+import { Calculator, Plus, Trash2, Save, Download, TrendingUp, Search, Loader2 } from 'lucide-react';
 
 interface RateItem {
   id: string;

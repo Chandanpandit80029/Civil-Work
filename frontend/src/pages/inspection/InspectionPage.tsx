@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { useList, useCreate, useDelete } from '@/hooks/useApi';
 import { ClipboardCheck, Plus, Search, CheckCircle2, XCircle, Loader2, Trash2, X, Check } from 'lucide-react';
 import toast from 'react-hot-toast';
-import type { Inspection, InspectionItem } from '@/types';
+import type { Inspection } from '@/types';
 import { formatDate } from '@/lib/utils';
 
 export default function InspectionPage() {

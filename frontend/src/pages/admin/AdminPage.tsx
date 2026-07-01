@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { api } from '@/services/api';
 import { Shield, Users, BookOpen, Package, FileText, Activity, Loader2 } from 'lucide-react';
 

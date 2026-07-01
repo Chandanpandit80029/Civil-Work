@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { HelpCircle, Mail, MessageCircle, FileText, ChevronRight } from 'lucide-react';
+import { Mail, MessageCircle } from 'lucide-react';
 
 const faqs = [
   { q: 'How to use the Engineering Calculator?', a: 'Navigate to Calculator module, select a calculator type, enter parameters and click Calculate.' },

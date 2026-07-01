@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select } from '@/components/ui/select';
 import { useList, useCreate, useUpdate, useDelete } from '@/hooks/useApi';
-import { FolderKanban, Plus, MoreHorizontal, Search, Edit3, Trash2, X, Check, Loader2 } from 'lucide-react';
+import { FolderKanban, Plus, Search, Edit3, Trash2, X, Check, Loader2 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import type { Project } from '@/types';
 

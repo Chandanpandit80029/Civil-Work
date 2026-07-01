@@ -3,7 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useList, useCreate, useUpdate, useDelete } from '@/hooks/useApi';
-import { StickyNote, Plus, Search, Bookmark, Trash2, Edit3, X, Check, Loader2 } from 'lucide-react';
+import { StickyNote, Plus, Search, Bookmark, Trash2, X, Check, Loader2 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import type { Note } from '@/types';
 

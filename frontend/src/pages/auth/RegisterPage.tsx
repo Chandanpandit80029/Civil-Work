@@ -38,7 +38,7 @@ export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const { setUser } = useAuthStore();
+  useAuthStore();
 
   const {
     register,

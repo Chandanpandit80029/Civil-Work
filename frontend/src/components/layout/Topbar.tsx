@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuthStore } from '@/store/authStore';
 import { useThemeStore } from '@/store/themeStore';
-import { cn, getInitials } from '@/lib/utils';
+import { getInitials } from '@/lib/utils';
 import {
   Search,
   Moon,

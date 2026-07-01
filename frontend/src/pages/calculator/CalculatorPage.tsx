@@ -1,20 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Select } from '@/components/ui/select';
 import { calculatorFunctions, calculatorMetadata } from '@/utils/calculations';
 import type { CalcInput } from '@/utils/calculations';
 import type { CalculationResult } from '@/types';
 import { api } from '@/services/api';
-import { useList, useCreate } from '@/hooks/useApi';
+import { useList } from '@/hooks/useApi';
 import toast from 'react-hot-toast';
 import {
   Calculator,
   ArrowLeft,
-  Download,
   Share2,
   Printer,
   Bookmark,
@@ -26,10 +24,8 @@ import {
   Building2,
   Droplets,
   Zap,
-  Compass,
   Pipette,
   BrickWall,
-  Gauge,
   Route,
   Waves,
   SlidersHorizontal,
@@ -87,7 +83,7 @@ export default function CalculatorPage() {
   const [selectedCalc, setSelectedCalc] = useState(calculatorType || '');
   const [isSaving, setIsSaving] = useState(false);
 
-  const { data: categoriesResponse } = useList<any>('/calculators/categories', ['calculator-categories']);
+  useList<any>('/calculators/categories', ['calculator-categories']);
 
   const calculator = selectedCalc ? calculatorMetadata[selectedCalc] : null;
   const calculateFn = selectedCalc ? calculatorFunctions[selectedCalc] : null;

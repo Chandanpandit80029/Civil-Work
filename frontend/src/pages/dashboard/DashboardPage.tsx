@@ -12,8 +12,6 @@ import {
   FileSpreadsheet,
   Building2,
   ClipboardCheck,
-  TrendingUp,
-  Users,
   Clock,
   Star,
   ArrowRight,

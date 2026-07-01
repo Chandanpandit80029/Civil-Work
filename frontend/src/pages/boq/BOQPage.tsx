@@ -3,8 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useList, useCreate, useUpdate, useDelete } from '@/hooks/useApi';
-import { FileSpreadsheet, Plus, Trash2, Download, Printer, Search, Save, ChevronDown, ChevronUp, FolderOpen, TrendingUp, DollarSign, FileText, Loader2 } from 'lucide-react';
-import toast from 'react-hot-toast';
+import { FileSpreadsheet, Plus, Trash2, Download, Search, Save, ChevronDown, ChevronUp, TrendingUp, DollarSign, FileText, Loader2 } from 'lucide-react';
 import type { BOQ, BOQItem } from '@/types';
 
 function formatCurrency(amount: number): string {
@@ -16,27 +15,6 @@ function formatCurrency(amount: number): string {
 }
 
 const UNITS = ['m³', 'm²', 'm', 'kg', 'tonne', 'nos', 'L', 'day', 'hour', 'sq.ft', 'sq.m', 'bag'];
-
-const SECTIONS = [
-  'Earthwork', 'Concrete', 'Reinforcement', 'Formwork', 'Brickwork',
-  'Plaster', 'Flooring', 'Waterproofing', 'Painting', 'Joinery', 'MEP', 'External Works', 'Other',
-];
-
-const SECTION_COLORS: Record<string, string> = {
-  Earthwork: 'bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300',
-  Concrete: 'bg-slate-100 text-slate-700 dark:bg-slate-950 dark:text-slate-300',
-  Reinforcement: 'bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300',
-  Formwork: 'bg-orange-100 text-orange-700 dark:bg-orange-950 dark:text-orange-300',
-  Brickwork: 'bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300',
-  Plaster: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-950 dark:text-yellow-300',
-  Flooring: 'bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300',
-  Waterproofing: 'bg-cyan-100 text-cyan-700 dark:bg-cyan-950 dark:text-cyan-300',
-  Painting: 'bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300',
-  Joinery: 'bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300',
-  MEP: 'bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300',
-  'External Works': 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300',
-  Other: 'bg-gray-100 text-gray-700 dark:bg-gray-950 dark:text-gray-300',
-};
 
 const PRESET_ITEMS: Record<string, Omit<BOQItem, 'id' | 'itemNo'>[]> = {
   Earthwork: [
@@ -79,7 +57,7 @@ export default function BOQPage() {
   const [projectName, setProjectName] = useState('New Construction Project');
   const [location, setLocation] = useState('');
   const [client, setClient] = useState('');
-  const [expandSections, setExpandSections] = useState<Record<string, boolean>>({});
+  const [, setExpandSections] = useState<Record<string, boolean>>({});
   const [searchQuery, setSearchQuery] = useState('');
   const [showSaved, setShowSaved] = useState(false);
   const [transportCost, setTransportCost] = useState(25000);
@@ -143,20 +121,6 @@ export default function BOQPage() {
 
   const deleteItem = (id: string) => {
     setItems(items.filter((item) => item.id !== id));
-  };
-
-  const addPresetItems = (section: string) => {
-    const presets = PRESET_ITEMS[section];
-    if (!presets) return;
-    let itemNo = items.length + 1;
-    const newItems = presets.map((p) => ({
-      ...p,
-      id: crypto.randomUUID?.() ?? Math.random().toString(36).slice(2),
-      itemNo: itemNo++,
-      amount: p.quantity * p.rate,
-    }));
-    setItems([...items, ...newItems]);
-    setExpandSections((prev) => ({ ...prev, [section]: true }));
   };
 
   const saveBOQ = async () => {
@@ -243,9 +207,6 @@ export default function BOQPage() {
   const overheadAmount = totalItemsCost * overheadPercent / 100;
   const contingencyAmount = totalItemsCost * contingencyPercent / 100;
   const grandTotal = totalItemsCost + transportCost + gstAmount + overheadAmount + contingencyAmount;
-
-  // Group items by section (using a default section since BOQItem doesn't have section)
-  const sectionOrder = ['Items'];
 
   return (
     <div className="space-y-6 animate-fade-in">

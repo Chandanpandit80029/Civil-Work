@@ -3,7 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select } from '@/components/ui/select';
-import { useList, useCreate, useUpdate, useDelete } from '@/hooks/useApi';
+import { useList, useCreate, useDelete } from '@/hooks/useApi';
 import { FileText, Plus, Search, Trash2, FileDown, Loader2, X, Check } from 'lucide-react';
 import toast from 'react-hot-toast';
 import type { Report } from '@/types';

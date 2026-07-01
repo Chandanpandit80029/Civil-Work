@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useList, useCreate, useUpdate, useDelete } from '@/hooks/useApi';
 import { Building2, Calculator, Download, Plus, Trash2, Save, Search, Home, Warehouse, Building, Road, GitBranch, TrendingUp, ChevronDown, ChevronUp, Loader2 } from 'lucide-react';
-import toast from 'react-hot-toast';
 import type { Estimation } from '@/types';
 
 function formatCurrency(amount: number): string {
@@ -205,8 +204,6 @@ export default function EstimationPage() {
   const filteredSaved = savedEstimations.filter((s) =>
     s.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
-  const SelectedIcon = currentType.icon;
 
   return (
     <div className="space-y-6 animate-fade-in">

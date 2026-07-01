@@ -29,7 +29,8 @@ Thumbs.db
 *.swo
 
 # IDE/Editor
-.vscode/
+.vscode/*
+!.vscode/mcp.json
 .idea/
 *.sublime-workspace
 

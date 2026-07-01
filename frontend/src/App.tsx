@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useThemeStore } from '@/store/themeStore';
 import { useAuthStore } from '@/store/authStore';
+import { supabase } from '@/utils/supabase';
 import AppLayout from '@/components/layout/AppLayout';
 
 // Pages
@@ -59,6 +60,30 @@ function AdminRoute({ children }: { children: React.ReactNode }) {
     return <Navigate to="/dashboard" replace />;
   }
   return <>{children}</>;
+}
+
+function SupabaseTest() {
+  const [todos, setTodos] = useState<{ id: number; name: string }[]>([]);
+
+  useEffect(() => {
+    async function getTodos() {
+      const { data: todos } = await supabase.from('todos').select();
+
+      if (todos) {
+        setTodos(todos);
+      }
+    }
+
+    getTodos();
+  }, []);
+
+  return (
+    <ul>
+      {todos.map((todo) => (
+        <li key={todo.id}>{todo.name}</li>
+      ))}
+    </ul>
+  );
 }
 
 export default function App() {
@@ -143,6 +168,9 @@ export default function App() {
             
             {/* Help */}
             <Route path="help" element={<HelpPage />} />
+
+            {/* Supabase Test */}
+            <Route path="supabase-test" element={<SupabaseTest />} />
           </Route>
 
           {/* 404 */}

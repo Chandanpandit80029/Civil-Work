@@ -4,7 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useList } from '@/hooks/useApi';
-import { Search, Package, ChevronRight, Loader2, Eye, Download } from 'lucide-react';
+import { Search, Package, ChevronRight, Loader2, Eye } from 'lucide-react';
 import type { Material } from '@/types';
 
 const categoryIcons: Record<string, string> = {

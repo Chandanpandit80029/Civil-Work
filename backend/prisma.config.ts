@@ -2,5 +2,5 @@ import { defineConfig } from 'prisma/config';
 
 export default defineConfig({
   earlyAccess: true,
-  schema: '../database/schema.prisma',
+  schema: 'prisma/schema.prisma',
 });

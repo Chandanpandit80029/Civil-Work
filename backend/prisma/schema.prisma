@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 // ========== USER & AUTH ==========
@@ -55,7 +56,6 @@ enum UserRole {
   GUEST
 }
 
-// ========== ROLE & PERMISSIONS ==========
 model Role {
   id          String       @id @default(uuid())
   name        String       @unique
@@ -73,7 +73,6 @@ model Permission {
   createdAt   DateTime @default(now())
 }
 
-// ========== PROJECTS ==========
 model Project {
   id          String        @id @default(uuid())
   name        String
@@ -131,7 +130,6 @@ model ProjectMember {
   joinedAt  DateTime @default(now())
 }
 
-// ========== CALCULATIONS ==========
 model CalculatorCategory {
   id          String       @id @default(uuid())
   name        String
@@ -179,7 +177,6 @@ model SavedCalculation {
   createdAt   DateTime @default(now())
 }
 
-// ========== MATERIALS ==========
 model Material {
   id            String          @id @default(uuid())
   name          String
@@ -231,7 +228,6 @@ model Specification {
   material   Material @relation(fields: [materialId], references: [id], onDelete: Cascade)
 }
 
-// ========== IS CODES ==========
 model ISCode {
   id          String   @id @default(uuid())
   code        String   @unique
@@ -245,7 +241,6 @@ model ISCode {
   createdAt   DateTime @default(now())
 }
 
-// ========== BOQ ==========
 model BOQ {
   id          String   @id @default(uuid())
   projectId   String?
@@ -271,7 +266,6 @@ model BOQItem {
   boq         BOQ    @relation(fields: [boqId], references: [id], onDelete: Cascade)
 }
 
-// ========== ESTIMATION ==========
 model Estimation {
   id          String               @id @default(uuid())
   projectId   String?
@@ -295,7 +289,6 @@ model EstimationBreakdown {
   estimation   Estimation @relation(fields: [estimationId], references: [id], onDelete: Cascade)
 }
 
-// ========== FILES ==========
 model ProjectFile {
   id           String   @id @default(uuid())
   originalName String
@@ -312,7 +305,6 @@ model ProjectFile {
   createdAt    DateTime @default(now())
 }
 
-// ========== INSPECTION ==========
 model Inspection {
   id          String           @id @default(uuid())
   projectId   String?
@@ -339,7 +331,6 @@ model InspectionItem {
   inspection   Inspection @relation(fields: [inspectionId], references: [id], onDelete: Cascade)
 }
 
-// ========== DAILY PROGRESS ==========
 model DailyProgress {
   id           String   @id @default(uuid())
   projectId    String
@@ -358,7 +349,6 @@ model DailyProgress {
   createdAt    DateTime @default(now())
 }
 
-// ========== NOTES ==========
 model Note {
   id          String   @id @default(uuid())
   title       String
@@ -373,7 +363,6 @@ model Note {
   updatedAt   DateTime @updatedAt
 }
 
-// ========== REPORTS ==========
 model Report {
   id        String   @id @default(uuid())
   title     String
@@ -386,7 +375,6 @@ model Report {
   createdAt DateTime @default(now())
 }
 
-// ========== NOTIFICATIONS ==========
 model Notification {
   id        String   @id @default(uuid())
   userId    String
@@ -399,7 +387,6 @@ model Notification {
   createdAt DateTime @default(now())
 }
 
-// ========== ACTIVITY LOGS ==========
 model ActivityLog {
   id        String   @id @default(uuid())
   userId    String
@@ -411,7 +398,6 @@ model ActivityLog {
   createdAt DateTime @default(now())
 }
 
-// ========== SETTINGS ==========
 model Settings {
   id        String @id @default(uuid())
   userId    String @unique
@@ -423,7 +409,6 @@ model Settings {
   pushNotif Boolean @default(true)
 }
 
-// ========== BOOKMARKS, DOWNLOADS, FAVORITES ==========
 model Bookmark {
   id        String   @id @default(uuid())
   userId    String
@@ -462,7 +447,6 @@ model Favorite {
   createdAt DateTime @default(now())
 }
 
-// ========== FEEDBACK & SUPPORT ==========
 model Feedback {
   id        String   @id @default(uuid())
   userId    String
@@ -485,7 +469,6 @@ model SupportTicket {
   updatedAt DateTime @updatedAt
 }
 
-// ========== UNIT CONVERSION HISTORY ==========
 model UnitConversion {
   id         String   @id @default(uuid())
   userId     String?
@@ -497,7 +480,6 @@ model UnitConversion {
   createdAt  DateTime @default(now())
 }
 
-// ========== SURVEY DATA ==========
 model SurveyData {
   id          String   @id @default(uuid())
   projectId   String?
@@ -507,7 +489,6 @@ model SurveyData {
   createdAt   DateTime @default(now())
 }
 
-// ========== LEARNING ==========
 model Article {
   id          String   @id @default(uuid())
   title       String
@@ -533,7 +514,6 @@ model Tutorial {
   createdAt   DateTime @default(now())
 }
 
-// ========== RATE ANALYSIS ==========
 model RateAnalysis {
   id             String   @id @default(uuid())
   userId         String
